@@ -368,15 +368,15 @@ async function handleCronTrigger(env) {
         if (sub.url.startsWith('http') && sub.enabled) {
             try {
                 // --- 並行請求流量和節點內容 ---
-                const trafficRequest = fetch(new Request(sub.url, { 
-                    headers: { 'User-Agent': 'Clash for Windows/0.20.39' }, 
+                const trafficRequest = fetch(new Request(sub.url, {
+                    headers: { 'User-Agent': 'clash-verge/v2.4.3' },
                     redirect: "follow",
-                    cf: { insecureSkipVerify: true } 
+                    cf: { insecureSkipVerify: true }
                 }));
-                const nodeCountRequest = fetch(new Request(sub.url, { 
-                    headers: { 'User-Agent': 'MiSub-Cron-Updater/1.0' }, 
+                const nodeCountRequest = fetch(new Request(sub.url, {
+                    headers: { 'User-Agent': 'v2rayN/7.23' },
                     redirect: "follow",
-                    cf: { insecureSkipVerify: true } 
+                    cf: { insecureSkipVerify: true }
                 }));
                 const [trafficResult, nodeCountResult] = await Promise.allSettled([
                     Promise.race([trafficRequest, new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 8000))]),
@@ -732,13 +732,14 @@ async function handleApiRequest(request, env) {
                 const result = { count: 0, userInfo: null };
 
                 try {
+                    // 使用统一的User-Agent策略
                     const fetchOptions = {
-                        headers: { 'User-Agent': 'MiSub-Node-Counter/2.0' },
+                        headers: { 'User-Agent': 'v2rayN/7.23' },
                         redirect: "follow",
                         cf: { insecureSkipVerify: true }
                     };
                     const trafficFetchOptions = {
-                        headers: { 'User-Agent': 'Clash for Windows/0.20.39' },
+                        headers: { 'User-Agent': 'clash-verge/v2.4.3' },
                         redirect: "follow",
                         cf: { insecureSkipVerify: true }
                     };
@@ -811,7 +812,7 @@ async function handleApiRequest(request, env) {
 
             try {
                 const response = await fetch(new Request(externalUrl, {
-                    headers: { 'User-Agent': 'MiSub-Proxy/1.0' }, // Identify as proxy
+                    headers: { 'User-Agent': 'v2rayN/7.23' }, // 统一User-Agent
                     redirect: "follow",
                     cf: { insecureSkipVerify: true } // Allow insecure SSL for flexibility
                 }));
@@ -849,7 +850,7 @@ async function handleApiRequest(request, env) {
                 const updatePromises = subsToUpdate.map(async (sub) => {
                     try {
                         const fetchOptions = {
-                            headers: { 'User-Agent': 'MiSub-Batch-Updater/1.0' },
+                            headers: { 'User-Agent': 'v2rayN/7.23' },
                             redirect: "follow",
                             cf: { insecureSkipVerify: true }
                         };
@@ -1290,7 +1291,7 @@ async function handleApiRequest(request, env) {
                 
                 const result = {
                     url: debugUrl,
-                    userAgent: userAgent || 'MiSub-Debug/1.0',
+                    userAgent: userAgent || 'v2rayN/7.23',
                     success: false,
                     rawContent: '',
                     processedContent: '',
@@ -1497,7 +1498,7 @@ function getProcessedUserAgent(originalUserAgent, url = '') {
     // CF-Workers-SUB的精华策略：
     // 统一使用v2rayN UA获取订阅，绕过机场过滤同时保证获取完整节点
     // 不需要复杂的客户端判断，简单而有效
-    return 'v2rayN/6.45';
+    return 'v2rayN/7.23';
 }
 
 // --- 节点列表生成函数 ---
