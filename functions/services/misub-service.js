@@ -13,10 +13,7 @@ import { formatBytes } from '../utils/data-utils.js';
 const KV_KEY_SUBS = 'misub_subscriptions_v1';
 const KV_KEY_PROFILES = 'misub_profiles_v1';
 const KV_KEY_SETTINGS = 'worker_settings_v1';
-const DEFAULT_EXPIRED_NODE = `
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpsRTk4ODhmUjM1NTU@127.0.0.1:10000?plugin=obfs-local%3Bobfs%3Dhttp%3Bobfs-host%3Db2m11b0186.iqiyi.com#开通%20|%20续费%20|%20售后
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpsRTk4ODhmUjM1NTU@127.0.0.1:10000?plugin=obfs-local%3Bobfs%3Dhttp%3Bobfs-host%3Db2m11b0186.iqiyi.com#客服微信%20EX3116
-`.trim();
+const DEFAULT_EXPIRED_NODE = `trojan://00000000-0000-0000-0000-000000000000@127.0.0.1:443#${encodeURIComponent('客服微信 EX3116')}`;
 
 const defaultSettings = {
     FileName: 'MiSub',
