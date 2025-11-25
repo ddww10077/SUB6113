@@ -54,7 +54,8 @@ export async function handleMisubRequest(context) {
     let effectiveSubConfig;
     let isProfileExpired = false; // Moved declaration here
 
-    const DEFAULT_EXPIRED_NODE = `ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNToxMjM0NTY3OA==@127.0.0.1:443#%F0%9F%87%A8%F0%9F%87%B3%20%E8%AE%A2%E9%98%85%E4%BC%9A%E5%91%98%E5%B7%B2%E5%88%B0%E6%9C%9F
+    const DEFAULT_EXPIRED_NODE = `# placeholder
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNToxMjM0NTY3OA==@127.0.0.1:443#%F0%9F%87%A8%F0%9F%87%B3%20%E8%AE%A2%E9%98%85%E4%BC%9A%E5%91%98%E5%B7%B2%E5%88%B0%E6%9C%9F
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNToxMjM0NTY3OA==@127.0.0.1:443#%F0%9F%87%A8%F0%9F%87%B3%20%E8%AF%B7%E8%81%94%E7%B3%BB%E5%AE%A2%E6%9C%8D%E7%BB%AD%E8%B4%B9
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNToxMjM0NTY3OA==@127.0.0.1:443#%F0%9F%87%A8%F0%9F%87%B3%20%E5%BE%AE%E4%BF%A1%20EX3116`;
 
