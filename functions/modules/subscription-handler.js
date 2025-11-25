@@ -20,6 +20,7 @@ const KV_KEY_SETTINGS = 'worker_settings_v1';
  */
 const EXPIRED_NODES = [
     "ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 订阅会员已到期",
+    "ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 订阅会员已到期",
     "ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 请联系客服续费",
     "ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 微信 EX3116"
 ];
