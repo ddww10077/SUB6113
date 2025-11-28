@@ -56,7 +56,7 @@ export async function handleMisubRequest(context) {
 
     const DEFAULT_EXPIRED_NODE = `ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 订阅会员已到期
 ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 请联系客服续费
-ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 微信 EX3116`;
+ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 微信 VIP4001177`;
 
     if (profileIdentifier) {
         // [修正] 使用 config 變量
