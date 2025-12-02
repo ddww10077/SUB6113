@@ -1917,7 +1917,7 @@ async function handleMisubRequest(context) {
         }
         
         // 使用增强版TG通知，包含IP地理位置信息
-        context.waitUntil(sendEnhancedTgNotification(config, '🛰️ *订阅被访问*', clientIp, additionalData));
+        context.waitUntil(sendEnhancedTgNotification(config, '🟢 *订阅被访问*', clientIp, additionalData));
     }
 
     let prependedContentForSubconverter = '';
