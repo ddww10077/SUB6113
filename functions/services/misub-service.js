@@ -9,13 +9,21 @@ import { sendEnhancedTgNotification } from '../services/notification-service.js'
 import { determineFormatByUserAgent, determineFormatByUrl, clashFix, isValidBase64 } from '../utils/format-utils.js';
 import { formatBytes } from '../utils/data-utils.js';
 
+
+
+// === Added: normalize expiresAt to 00:00:00 ===
+function normalizeToZeroClock(date) {
+    const d = new Date(date);
+    d.setHours(0, 0, 0, 0);
+    return d;
+}
 // 常量定义
 const KV_KEY_SUBS = 'misub_subscriptions_v1';
 const KV_KEY_PROFILES = 'misub_profiles_v1';
 const KV_KEY_SETTINGS = 'worker_settings_v1';
 const DEFAULT_EXPIRED_NODE = `ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 订阅会员已到期
 ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 请联系客服续费
-ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 微信 VIP4001177`;
+ss://YWVzLTI1Ni1nY206MDAwMDAwMDAwMDAwMDAwMA==@127.0.0.1:443#🇨🇳 微信 EX3116`;
 
 const defaultSettings = {
     FileName: 'MiSub',
@@ -49,7 +57,7 @@ function migrateConfigSettings(config) {
         };
     }
 
-    // ���保 prefixConfig 的所有字段都存在
+    // 确保 prefixConfig 的所有字段都存在
     if (!migratedConfig.prefixConfig.hasOwnProperty('enableManualNodes')) {
         migratedConfig.prefixConfig.enableManualNodes = migratedConfig.prependSubName ?? true;
     }
@@ -134,7 +142,7 @@ export async function handleMisubRequest(context) {
         const profile = allProfiles.find(p => (p.customId && p.customId === profileIdentifier) || p.id === profileIdentifier);
         if (profile && profile.enabled) {
             if (profile.expiresAt) {
-                const expiryDate = new Date(profile.expiresAt);
+                const expiryDate = normalizeToZeroClock(profile.expiresAt);
                 const now = new Date();
                 if (now > expiryDate) {
                     isProfileExpired = true;
@@ -201,7 +209,7 @@ export async function handleMisubRequest(context) {
             }
         }
 
-        context.waitUntil(sendEnhancedTgNotification(config, '🛰️ *订阅被访问*', clientIp, additionalData));
+        context.waitUntil(sendEnhancedTgNotification(config, '🟢 *订阅被访问*', clientIp, additionalData));
     }
 
     let prependedContentForSubconverter = '';
