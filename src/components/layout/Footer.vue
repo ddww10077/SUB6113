@@ -9,7 +9,7 @@ const currentYear = computed(() => new Date().getFullYear());
     <p class="text-xs text-gray-500 dark:text-gray-400">
       Copyright © {{ currentYear }} 
       <a 
-        href="https://ex3116.45090135.xyz" 
+        href="https://test.45090135.xyz" 
         target="_blank" 
         class="font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
       >
